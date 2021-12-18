@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++)
                 for (int k = 0; k < N; k++)
-                    C[i][j] = A[i][k] * B[k][j];
+                    C[i][j] += A[i][k] * B[k][j];
         }
         t = clock() - t;
         cout << "Time ijk loops is " << t / CLOCKS_PER_SEC << " seconds" << endl;
@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
         for (int j = 0; j < N; j++) {
             for (int k = 0; k < N; k++)
                 for (int i = 0; i < N; i++)
-                    C[i][j] = A[i][k] * B[k][j];
+                    C[i][j] += A[i][k] * B[k][j];
         }
         t = clock() - t;
         cout << "Time jki loops is " << t / CLOCKS_PER_SEC << " seconds" << endl;
@@ -137,7 +137,7 @@ int main(int argc, char *argv[]) {
         for (i = 0; i < N; i++) {
             for (k = 0; k < N; k++)
                 for (j = 0; j < N; j++)
-                    C[i][j] = A[i][k] * B[k][j];
+                    C[i][j] += A[i][k] * B[k][j];
         }
         t = clock() - t;
         cout << "Time ikj loops is " << t / CLOCKS_PER_SEC << " seconds" << endl;
