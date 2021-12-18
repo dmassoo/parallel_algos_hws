@@ -34,10 +34,11 @@ int main(int argc, char *argv[]) {
     using std::chrono::duration;
 
     int N = atoi(argv[1]);
+    double times[10];
     std::vector<int> vector = generate_data(N);
     for (int nthr = 1; nthr <= 10; ++nthr) {
         std::cout << "Number of threads = " << nthr << std::endl;
-        duration<double, std::micro> total_time{};
+        duration<double, std::milli> total_time{};
         int N_MES = 7;
         int max_value;
         for (int nmeasures = 0; nmeasures <= N_MES; ++nmeasures) {
@@ -46,8 +47,12 @@ int main(int argc, char *argv[]) {
             auto t2 = high_resolution_clock::now();
             total_time += (t2 - t1);
         }
-        std::cout << "Avg execution time = " << total_time.count() / N_MES << " mks" << std::endl;
-// todo: make output more convenient to retrieve data vectors for plotting
+        double tt = total_time.count() / N_MES;
+        std::cout << "Avg execution time = " << tt << " ms" << std::endl;
+        times[nthr - 1] = tt;
+    }
+    for (int i = 0; i < 10; i++) {
+        std::cout << times[i] << '\n';
     }
 
 //    dumb testing via sort and getting the first item
