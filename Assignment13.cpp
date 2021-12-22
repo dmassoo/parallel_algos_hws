@@ -49,7 +49,8 @@ int main(int argc, char **argv) {
     just_init_matrix(B, N);
     zero_init_matrix(C, N);
 
-	MPI_Barrier(MPI_COMM_WORLD); //barrier process synchronization
+    //barrier process synchronization
+	MPI_Barrier(MPI_COMM_WORLD);
     // start timing for each process
     start_time = MPI_Wtime();
     // matrix multiplication
